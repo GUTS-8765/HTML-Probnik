@@ -1,0 +1,25 @@
+
+body {
+  /* Путь к вашему GIF-файлу */
+  background-image: url('TF4iI-.gif');
+  
+  /* Изображение не повторяется */
+  background-repeat: no-repeat;
+  
+  /* Растягивание на весь экран */
+  background-size: cover;
+  
+  /* Центрирование */
+  background-position: center;
+  
+  /* Фиксация фона при скролле */
+  background-attachment: fixed;
+  
+  /* Цвет фона (пока загружается GIF) */
+  background-color: #333;
+}
+
+body { background-color: rgb(8, 158, 228)}
+h1 {color: rgb(0, 72, 255); }  
+    
+body{ color:rgb(253, 2, 2);}
