@@ -1,0 +1,8 @@
+ИМЯ_СТУДЕНТА_zadanie3/
+├── app.py              — Flask-приложение
+├── database.db         — файл SQLite (создаётся автоматически)
+├── templates/
+│   ├── index.html      — главная страница
+│   └── add.html        — страница с формой
+└── static/
+    └── style.css       — стили

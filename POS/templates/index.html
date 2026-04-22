@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реестр наблюдений за облаками</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Аномальные облака</h1>
+            <nav>
+                <a href="{{ url_for('index') }}" class="btn">Главная</a>
+                <a href="{{ url_for('add') }}" class="btn btn-primary">Добавить наблюдение</a>
+            </nav>
+        </header>
+        <main>
+            <section class="filter-section">
+                <h2>Фильтр по типу облака</h2>
+                <div class="filter-buttons">
+                    <a href="{{ url_for('index') }}" class="filter-btn {% if not current_filter %}active{% endif %}">Все</a>
+                    {% for type in cloud_types %}
+                        <a href="{{ url_for('index', type=type) }}" 
+                           class="filter-btn {% if current_filter == type %}active{% endif %}">
+                            {{ type }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="observations-list">
+                <h2>Наблюдения ({{ observations|length }})</h2>
+                {% if observations %}
+                    <div class="cards">
+                        {% for obs in observations %}
+                            <div class="card">
+                                <div class="card-header">
+                                    <span class="cloud-type">{{ obs.cloud_type }}</span>
+                                    <span class="date">{{ obs.observed_at }}</span>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>📍 Место:</strong> {{ obs.location }}</p>
+                                    <p><strong>👤 Наблюдатель:</strong> {{ obs.observer }}</p>
+                                    {% if obs.description %}
+                                        <p><strong>📝 Описание:</strong> {{ obs.description }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="empty-message">Пока нет ни одного наблюдения. <a href="{{ url_for('add') }}">Добавьте первое!</a></p>
+                {% endif %}
+            </section>
+        </main>
+
+        <footer>
+            <p>Клуб наблюдателей за аномальными облаками, 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

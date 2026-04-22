@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить наблюдение</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Новое наблюдение</h1>
+            <nav>
+                <a href="{{ url_for('index') }}" class="btn">← На главную</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2>Заполните информацию</h2>
+                {% if errors %}
+                    <div class="error-box">
+                        <ul>
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <form method="POST" action="{{ url_for('add') }}" class="observation-form">
+                    <div class="form-group">
+                        <label for="location"> Место наблюдения *</label>
+                        <input type="text" id="location" name="location" 
+                               value="{{ form_data.location if form_data else '' }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cloud_type"> Тип облака *</label>
+                        <select id="cloud_type" name="cloud_type" required>
+                            <option value="">-- Выберите тип --</option>
+                            {% for type in cloud_types %}
+                                <option value="{{ type }}" 
+                                    {% if form_data and form_data.cloud_type == type %}selected{% endif %}>
+                                    {{ type }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observer"> Ваше имя *</label>
+                        <input type="text" id="observer" name="observer" 
+                               value="{{ form_data.observer if form_data else '' }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observed_at"> Дата и время наблюдения *</label>
+                        <input type="datetime-local" id="observed_at" name="observed_at" 
+                               value="{{ form_data.observed_at if form_data else '' }}" required>
+                        <small>Формат: ГГГГ-ММ-ДД ЧЧ:ММ</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description"> Описание (необязательно)</label>
+                        <textarea id="description" name="description" rows="4">{{ form_data.description if form_data else '' }}</textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Сохранить наблюдение</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Отмена</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>Клуб наблюдателей за аномальными облаками, 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
