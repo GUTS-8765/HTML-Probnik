@@ -1,4 +1,4 @@
-ИМЯ_СТУДЕНТА_zadanie3/
+Matvei_Jiroborov_zadanie3/
 ├── app.py              — Flask-приложение
 ├── database.db         — файл SQLite (создаётся автоматически)
 ├── templates/
