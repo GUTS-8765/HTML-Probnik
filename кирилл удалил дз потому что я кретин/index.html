@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя Карточка Пользователя</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b64e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: rgb(56, 0, 0);
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 350px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+       
+        .card-header {
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-top: -50px;
+            object-fit: cover; /* Чтобы фото не растягивалось */
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-name {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .card-role {
+            font-size: 16px;
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        .card-actions {
+            padding: 0 20px 25px 20px;
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background-color: #764ba2;
+            color: white;
+            border: 2px solid #764ba2;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a377d;
+            border-color: #5a377d;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #764ba2;
+            border: 2px solid #764ba2;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f3e5f5;
+        }
+
+        /* 4. НОВАЯ КНОПКА "ПОДЕЛИТЬСЯ" */
+        .btn-share {
+            background-color: #e0e0e0;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-share:hover {
+            background-color: #bdbdbd;
+            border-color: #bdbdbd;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header"></div>
+        
+        
+        <img src="https://unsplash.com" alt="Аватар" class="card-avatar">
+        
+        <div class="card-body">
+            
+            <h2 class="card-name">Алексей Иванов</h2>
+            <p class="card-role">Senior Frontend Developer</p>
+            <p class="card-description">Люблю создавать удобные интерфейсы и изучать новые технологии. Опыт работы в веб-разработке более 5 лет.</p>
+        </div>
+
+        <div class="card-actions">
+            <a href="#" class="btn btn-secondary">Профиль</a>
+            <a href="#" class="btn btn-primary">Связаться</a>
+            <!-- 4. НОВАЯ КНОПКА -->
+            <a href="#" class="btn btn-share">Поделиться</a>
+        </div>
+    </div>
+
+</body>
+</html>
